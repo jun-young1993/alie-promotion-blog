@@ -20,11 +20,34 @@ const userConfig = GithubBlogConfig({
         path: '/',
         title: 'About Me'
     }],
-    githubBlogShowPaths:[{
-        type: 'contents',
-        path: '/',
-        title: 'CONTENT'
-    }],
+    githubBlogShowPaths: [
+        '3D Printing & Additive Manufacturing',
+        'Barebone & Mini PC',
+        'Cleaning Appliances',
+        'Commercial Appliances',
+        'Computer & Office',
+        'Computer Cleaners',
+        'Computer Components',
+        'Computer Peripherals',
+        'Desktops & AIO',
+        'Home Appliance Parts',
+        'Home Appliances',
+        'Household Appliances',
+        'Kitchen Appliances',
+        'Laptop Parts & Accessories',
+        'Laptops',
+        'Major Appliances',
+        'Networking',
+        'Personal Care Appliances',
+        'Storage Device',
+        'Tablet Accessories & Parts',
+        'Tablets'
+    ].map((item) => {
+        return {
+            type: 'contents',
+            path: item,
+        }
+    }),
     userSitemap: [
         'ads.txt'
     ],
