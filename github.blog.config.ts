@@ -1,5 +1,6 @@
+import APP_CONFIG from "@/utills/config/config";
 import GithubBlogConfig from "@/utills/config/github-blog.config";
-import {GithubContentInterface} from "@/interfaces/github-user.interface";
+
 const menus: any= [
     {
         "name": "3D Printing & Additive Manufacturing",
@@ -1122,6 +1123,7 @@ const menus: any= [
         }
     }
 ];
+
 const userConfig = GithubBlogConfig({
     // site domain
     // domain: 'http://localhost:3000',
