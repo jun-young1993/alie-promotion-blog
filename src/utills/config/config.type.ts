@@ -17,7 +17,7 @@ export interface AppConfigType {
             issues: (issueNumber?: number) => string
             comments: (issueNumber: number) => string
             cacheContent: (path: string) => string
-            contents: (path: string) => string
+            contents: (path: string, repository?: string) => string
             trees: (treeSha: string) => string
             readme: (repo: string) => string,
             images: (path: string) => string
@@ -27,7 +27,8 @@ export interface AppConfigType {
     }
     APP_END_POINT: {
         repos: {
-            contents: (path: string) => string
+            contents: (path: string, repository?: string) => string
+            repositoryContents: (path: string, repository?: string) => string
             trees: (treeSha: string) => string
             readme: (repo: string) => string,
             comments: (issueNumber: number) => string
@@ -43,7 +44,8 @@ export const GithubBlogShowPathTypeEnum  = {
     PROFILE:'profile',
     MARKDOWN: 'markdown-viewer',
     ISSUE: 'issue',
-    DIRECTORIES: 'directories'
+    DIRECTORIES: 'directories',
+    REPOSITORY_CONTENTS: 'repository-contents',
 } as const;
 export type GithubBlogShowPathType = typeof GithubBlogShowPathTypeEnum [keyof typeof GithubBlogShowPathTypeEnum];
 export enum GithubBlogShowPathSrc {
