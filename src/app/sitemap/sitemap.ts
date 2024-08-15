@@ -41,8 +41,7 @@ export default async function sitemap({
             if(userSitemap){
                 result = userSitemap.map((sitemap) => ({
                     url: `${SITE_DOMAIN}/${sitemap}`,
-                    lastModified: new Date(),
-                    changeFrequency: 'yearly' as 'yearly',
+                    changeFrequency: 'never' as 'never',
                     priority: 1,
                 }));
             }
@@ -61,8 +60,8 @@ export default async function sitemap({
                 }
 
                 for(let index=0; contentsResult.length>index; index++){
-                    const {sha, type: gitFileType, path: gitFolderPath, name: gitContentName, url} = contentsResult[index];
-                    const {headers} = await fetch(url);
+                    const {sha, type: gitFileType, path: gitFolderPath, name: gitContentName} = contentsResult[index];
+
                     if(gitFileType === 'dir'){
 
                         const dirContents = await fetchContentRecursively(gitFolderPath);
@@ -75,8 +74,7 @@ export default async function sitemap({
                                         const encodingPath = decodeUriComponents(`${gitFolderPath}/${childrenPath}`);
                                         result.push({
                                             url: `${SITE_DOMAIN}/${redirectContentType}/${encodingPath}`,
-                                            lastModified: new Date(headers.get('last-modified')),
-                                            changeFrequency: 'yearly' as 'yearly',
+                                            changeFrequency: 'never' as 'never',
                                             priority: 1,
                                         })
 
@@ -87,8 +85,7 @@ export default async function sitemap({
                                 const encodingPath = decodeUriComponents(`${githubContent.path}`);
                                 result.push({
                                     url: `${SITE_DOMAIN}/${redirectContentType}/${encodingPath}`,
-                                    lastModified: new Date(headers.get('last-modified')),
-                                    changeFrequency: 'yearly' as 'yearly',
+                                    changeFrequency: 'never' as 'never',
                                     priority: 1,
                                 })
                             }
@@ -98,8 +95,7 @@ export default async function sitemap({
                         const encodingPath = decodeUriComponents(`${gitFolderPath}`);
                         result.push({
                             url: `${SITE_DOMAIN}/${redirectContentType}/${encodingPath}`,
-                            lastModified: new Date(headers.get('last-modified')),
-                            changeFrequency: 'yearly' as 'yearly',
+                            changeFrequency: 'never' as 'never',
                             priority: 1,
                         })
                     }
@@ -119,8 +115,8 @@ export default async function sitemap({
                 }
                 for(let index=0; contentsResult.length>index; index++) {
 
-                    const {sha, type: gitFileType, path: gitFolderPath, name: gitContentName, url} = contentsResult[index];
-                    const {headers} = await fetch(url);
+                    const {sha, type: gitFileType, path: gitFolderPath, name: gitContentName} = contentsResult[index];
+
 
 
                     if(gitFileType === 'dir'){
@@ -129,8 +125,7 @@ export default async function sitemap({
                         const encodingPath = decodeUriComponents(`${gitFolderPath}`);
                         result.push({
                             url: `${SITE_DOMAIN}/${redirectContentType}/${encodingPath}`,
-                            lastModified: new Date(headers.get('last-modified')),
-                            changeFrequency: 'yearly' as 'yearly',
+                            changeFrequency: 'never' as 'never',
                             priority: 1,
                         })
                     }
